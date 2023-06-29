@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.daos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,38 +8,38 @@ import org.springframework.web.bind.Annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios");
+@RequestMapping("/cliente");
 
 
-public class UsuarioController {
+public class ClientesController {
 	
 	
-	private final UsuarioRepository usuarioRepository;
+	private final ClientesRepository clienteRepository;
 	
 	@Autowired
-	public UsuarioController(UsuarioRepository usuarioRepository) {
-		this.usuarioRepository = usuarioRepository;
+	public ClienteController(ClienteRepository clienteRepository) {
+		this.clienteRepository = clienteRepository;
 	}
 	
 	
 	@GetMapping
-	public List<Usuario> obtenerUsuario() {
-		return UsuarioRepository.findAll();
+	public List<Cliente> obtenerCliente() {
+		return ClienteRepository.findAll();
 	}
 	
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
-		return usuarioRepository.findById(id)
-				.map(usuario -> ResponseEntity.ok().body(usuario))
+	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable Long id) {
+		return clienteRepository.findById(id)
+				.map(cliente -> ResponseEntity.ok().body(cliente))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping // método post
 	
-	public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
-		Usuario nuevoUsuario = usuarioRepository.save(usuario);
-		return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
+	public ResponseEntity<Cliente> crearCliente(@RequestBody Cliente cliente) {
+		Cliente nuevoCliente = clienteRepository.save(cliente);
+		return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCliente);
 	}
 	
 }

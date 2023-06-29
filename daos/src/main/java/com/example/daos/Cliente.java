@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.daos;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -6,17 +6,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "clientes")
 
 
-public class Usuario {
+public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	private Long id;
-	
+	private integer id;
+	private String dni;
 	private String nombre;
+	private String apellido;
 	private String email;
 	
 	
