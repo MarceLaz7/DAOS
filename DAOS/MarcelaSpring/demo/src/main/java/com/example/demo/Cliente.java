@@ -23,7 +23,7 @@ public class Cliente {
 	private String apellido;
 	private String domicilio;
 	private String email;
-	private LocalDate fechDeNacimiento;
+	private LocalDate fechaDeNacimiento;
 	private String numeroDePasaporte;
 	private String FechaDeVencimientoDePasaporte;
 	
